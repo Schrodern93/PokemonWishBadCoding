@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="model.js"></script>
+    <script src="controller.js"></script>
+    <script src="mainView.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        viewSelector()
+        function viewSelector(){
+            let html = "";
+            if(model.currentPage == "Wish") html = wishVeiw();
+            if(model.currentPage == "Vkort") html = VkortVeiw();
+            if(model.currentPage == "Bildekort") html = BildekortVeiw();
+
+
+            document.getElementById("app").innerHTML =`<div class="page">
+                <div class="meny">${menu()}</div>
+                <div class="innhold">${html}</div>
+                <div class="header">Totalpris for alle kort: ${calculatePrice()}kr 
+                    </br> Antall kort: ${model.cardlist.length}</div>
+                </div>` ;
+            }
+
+    </script>
+
+</body>
+</html>
